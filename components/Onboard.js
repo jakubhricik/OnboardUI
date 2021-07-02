@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import colors from "../assets/colors/colors";
 
-export default function Onboard() {
+export default function Onboard(props) {
   const renderItem = ({ item }) => {
     return (
       <View style={styles.slide}>
@@ -53,6 +53,9 @@ export default function Onboard() {
         dotStyle={styles.dotStyle}
         activeDotStyle={styles.activeDotStyle}
         data={data}
+        onDone={() => {
+          props.handleDone();
+        }}
       />
     </View>
   );
