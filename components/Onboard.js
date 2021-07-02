@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import colors from "../assets/colors/colors";
 
-export default function Onboard(props) {
+const Onboard = (props) => {
   const renderItem = ({ item }) => {
     return (
       <View style={styles.slide}>
@@ -40,6 +40,10 @@ export default function Onboard(props) {
     );
   };
 
+  const handleDone = () => {
+    props.handleDone();
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <StatusBar translucent backgroundColor="transparent" />
@@ -53,13 +57,11 @@ export default function Onboard(props) {
         dotStyle={styles.dotStyle}
         activeDotStyle={styles.activeDotStyle}
         data={data}
-        onDone={() => {
-          props.handleDone();
-        }}
+        onDone={handleDone}
       />
     </View>
   );
-}
+};
 
 const data = [
   {
@@ -135,3 +137,5 @@ const styles = StyleSheet.create({
     backgroundColor: colors.blue,
   },
 });
+
+export default Onboard;
